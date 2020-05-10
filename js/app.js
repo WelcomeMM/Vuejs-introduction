@@ -1,24 +1,18 @@
-new Vue({
+let vm = new Vue ({
     el: "#app",
-    data: {
-        message: "Salut les gens",
-        link: "https://google.com",
-        success : true,
-        persons : ["John", "Aegon", "Baleryon", "Daeron"]
-        },
+    data : {
+        seconds: 0
+    },
 
-    methods: {
-        close: function() {
+    mounted: function() {
 
-            this.success = false
-        },
-        style: function() {
-            if (this.success) {
-                return {background: '#00ff00'}
-            } else {
-                return {background: '#ff0000'}
-            }
-        }
+        this.$interval = setInterval(() => {
+            console.log("continue");
+            this.seconds++
+        }, 1000);
+    },
+    destroyed : function() {
+        clearInterval(this.$interval)
     }
 
 })
